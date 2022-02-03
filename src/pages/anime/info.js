@@ -1,11 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-const Info = () => {
+import { useParams, useNavigate } from "react-router-dom";
+const Info = (props) => {
   const [data, setData] = useState();
   const [link, setLink] = useState();
-  const { id } = useParams();
+  const navigate = useNavigate();
+  const id = props.id;
   useEffect(() => {
+    console.log(typeof parseInt(id));
+
     axios
       .get(`https://kitsu.io/api/edge/anime/${id}`)
       .then((res) => {
@@ -21,8 +24,10 @@ const Info = () => {
         const datas = res.data;
         setLink(datas);
       })
-      .catch(() => {
+      .catch((e) => {
+        console.log();
         setLink(null);
+        navigate("/", { replace: true });
       });
   }, []);
   const linkConten = [];

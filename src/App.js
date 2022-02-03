@@ -1,18 +1,22 @@
 // import logo from './logo.svg';
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import List from "./pages/anime/list";
+// import List from "./pages/anime/list";
 import Home from "./pages/home/index";
-import Info from "./pages/anime/info";
+import Anime from "./pages/anime/index";
+// import Info from "./pages/anime/info";
 import Search from "./pages/anime/search";
+import NoPages from "./pages/404";
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/:id" element={<List />} />
-      <Route path="/anime/:id" element={<Info />} />
+      <Route path="/anime" element={<Anime />} />
+      <Route path="*" element={<NoPages />} />
+      {/* /* <Route path="/:id" element={<List />} /> */}
+      {/* {/* <Route path="/anime/:id" element={<Info />} /> */}
       <Route path="/anime/search" element={<Search />} />
-      {/* <Route path="id/:id" element={<Id />} /> */}
+      {/* <Route path="id/:id" element={<Id />} /> */} */
     </Routes>
     // <div className="App">
     //   <header className="App-header">

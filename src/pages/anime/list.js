@@ -1,12 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const List = () => {
+const List = (props) => {
   const [anime, setAnime] = useState(null);
   // const [loading, setLoading] = useState(true);
   var conten = [];
-  const { id } = useParams();
+  const id = props.id;
   useEffect(() => {
     if (id > 0) {
       axios
@@ -38,7 +38,7 @@ const List = () => {
         <div
           key={i}
           role="listitem"
-          className="xl:w-1/3 sm:w-3/4 md:w-2/5 relative mt-16 mb-32 sm:mb-24 xl:max-w-sm lg:w-2/5"
+          className="xl:w-1/3 sm:w-3/4 md:w-2/5 relative mt-16 mb-32 sm:mb-24 xl:max-w-sm lg:w-2/5 mx-3"
         >
           <div className=" overflow-hidden shadow-md bg-white rounded-2xl">
             <div className="absolute -mt-20 w-full flex justify-center">
@@ -68,7 +68,7 @@ const List = () => {
                 </Link>
                 <div className="mt-10">
                   <Link
-                    to={"/anime/" + anime.data[i].id}
+                    to={"/anime?tab=info&id=" + anime.data[i].id}
                     className="px-11 py-5 m-3 text-white rounded-full bg-blue-600"
                   >
                     info

@@ -8,7 +8,7 @@ const Search = () => {
 
   const handleSubmit = (e) => {
     // e.preventDefault();
-    setSearchParams({ q: e.target.q.value });
+    setSearchParams({ tab: "search", q: e.target.q.value });
     // const q = searchParams.get("q");
     // axios
     //   .get(`https://kitsu.io/api/edge/anime?filter[text]=${q}`)
@@ -64,7 +64,7 @@ const Search = () => {
                 </Link>
                 <div className="mt-10">
                   <Link
-                    to={"/anime/" + anime.data[i].id}
+                    to={"/anime?tab=info&id=" + anime.data[i].id}
                     className="px-11 py-5 m-3 text-white rounded-full bg-blue-600"
                   >
                     info
