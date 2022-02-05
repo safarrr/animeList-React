@@ -26,7 +26,7 @@ const List = (props) => {
         )
         .then((res) => {
           const data = res.data.data;
-          console.log(res);
+
           setAnime({ data });
         });
     }

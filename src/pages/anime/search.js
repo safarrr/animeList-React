@@ -19,7 +19,7 @@ const Search = () => {
       });
   };
   useEffect(() => {}, []);
-  console.log(anime);
+
   const conten = [];
   if (!anime) {
     conten.push(<h1>no data</h1>);

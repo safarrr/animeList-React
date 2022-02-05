@@ -23,7 +23,7 @@ function Home(state) {
                 LIst
               </Link>
               <Link
-                to="/anime/top"
+                to="/anime?tab=top"
                 className="bg-blue-600 m-5 text-white rounded-full py-3 px-10 text-xl"
               >
                 Top Anime

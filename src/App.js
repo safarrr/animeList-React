@@ -12,9 +12,9 @@ function App() {
   return (
     <>
       <Routes>
+        <Route path="*" element={<NoPages />} />
         <Route path="/" element={<Home />} />
         <Route path="/anime" element={<Anime />} />
-        <Route path="*" element={<NoPages />} />
         {/* /* <Route path="/:id" element={<List />} /> */}
         {/* {/* <Route path="/anime/:id" element={<Info />} /> */}
         <Route path="/anime/search" element={<Search />} />

@@ -7,7 +7,6 @@ import NavBar from "./components/navBar";
 function AnimeIndex() {
   const [qury, setQury] = useSearchParams();
 
-  console.log(qury.get("tab"));
   const tab = qury.get("tab");
   const id = qury.get("id");
   if (tab === "list") {

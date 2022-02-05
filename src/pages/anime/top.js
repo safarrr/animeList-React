@@ -8,7 +8,6 @@ function Top() {
       setData(res.data.data);
     });
   }, []);
-  console.log(Data);
   const conten = [];
   for (const i in Data) {
     conten.push(

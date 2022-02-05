@@ -7,8 +7,6 @@ const Info = (props) => {
   const navigate = useNavigate();
   const id = props.id;
   useEffect(() => {
-    console.log(typeof parseInt(id));
-
     axios
       .get(`https://kitsu.io/api/edge/anime/${id}`)
       .then((res) => {
@@ -25,7 +23,6 @@ const Info = (props) => {
         setLink(datas);
       })
       .catch((e) => {
-        console.log();
         setLink(null);
         navigate("/", { replace: true });
       });
