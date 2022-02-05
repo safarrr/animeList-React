@@ -56,7 +56,7 @@ const Info = (props) => {
   } else {
     return (
       <div className="flex flex-col  items-center">
-        <div className="px-10 py-10 m-5 bg-white drop-shadow-md rounded-3xl ">
+        <div className="px-10 py-10 m-5 bg-white drop-shadow-md rounded-3xl dark:bg-gray-800 dark:text-white ">
           <div className="w-32 h-auto">
             <img
               srcSet=""
@@ -66,8 +66,8 @@ const Info = (props) => {
             ></img>
           </div>
         </div>
-        <div className="flex flex-col">
-          <div className="px-10 py-10 shadow-md m-5 rounded-2xl text-center">
+        <div className="flex flex-col ">
+          <div className="px-10 py-10 shadow-md m-5 rounded-2xl text-center dark:bg-gray-800 dark:text-white">
             <h1 className="text-2xl font-bold">
               {data.attributes.titles.en_jp}
             </h1>
@@ -75,7 +75,7 @@ const Info = (props) => {
               {data.attributes.titles.ja_jp}
             </h1>
           </div>
-          <div className="px-10 py-10 shadow-md m-5 rounded-2xl">
+          <div className="px-10 py-10 shadow-md m-5 rounded-2xl dark:bg-gray-800 dark:text-white">
             <h1
               id="description"
               className="text-lg uppercase text-left font-bold mt-5"
@@ -126,7 +126,7 @@ const Info = (props) => {
             </h1>
             <p>{data.attributes.nsfw ? "yes" : "no"}</p>
           </div>
-          <div className="px-10 py-10 shadow-md m-5 rounded-2xl flex flex-col">
+          <div className="px-10 py-10 shadow-md m-5 rounded-2xl flex flex-col dark:bg-gray-800 dark:text-white">
             <h1
               id="status"
               className="text-lg uppercase text-left font-bold mt-5 mb-10"
@@ -141,7 +141,7 @@ const Info = (props) => {
               Link 1
             </button> */}
           </div>
-          <div className="px-10 py-10 shadow-md m-5 rounded-2xl text-center">
+          <div className="px-10 py-10 shadow-md m-5 rounded-2xl text-center dark:bg-gray-800 dark:text-white">
             <h1>
               Data by{" "}
               <a href="https://kitsu.io/" className="text-blue-600">

@@ -1,14 +1,23 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 const List = (props) => {
   const [anime, setAnime] = useState(null);
+
   // const [loading, setLoading] = useState(true);
   var conten = [];
   const id = props.id;
-  useEffect(() => {
-    if (id > 0) {
+  console.log(typeof id);
+  const [qury, setQury] = useSearchParams();
+  const getData = (id) => {
+    if (id === "0") {
+      axios.get("https://kitsu.io/api/edge/anime").then((res) => {
+        const data = res.data.data;
+        // console.log(data);
+        setAnime({ data });
+      });
+    } else {
       axios
         .get(
           `https://kitsu.io/api/edge/anime?page%5Blimit%5D=10&page%5Boffset%5D=${
@@ -17,16 +26,16 @@ const List = (props) => {
         )
         .then((res) => {
           const data = res.data.data;
-          // console.log(data);
+          console.log(res);
           setAnime({ data });
         });
-    } else {
-      axios.get("https://kitsu.io/api/edge/anime").then((res) => {
-        const data = res.data.data;
-        // console.log(data);
-        setAnime({ data });
-      });
     }
+  };
+  useEffect(() => {
+    if (!id) {
+      return setQury({ tab: "list", id: "0" });
+    }
+    getData(0);
   }, []);
 
   if (anime === null) {
@@ -40,7 +49,7 @@ const List = (props) => {
           role="listitem"
           className="xl:w-1/3 sm:w-3/4 md:w-2/5 relative mt-16 mb-32 sm:mb-24 xl:max-w-sm lg:w-2/5 mx-3"
         >
-          <div className=" overflow-hidden shadow-md bg-white rounded-2xl">
+          <div className=" overflow-hidden shadow-md bg-white rounded-2xl dark:bg-gray-800 dark:text-white">
             <div className="absolute -mt-20 w-full flex justify-center">
               <div className="h-32 w-32">
                 <img
@@ -84,12 +93,40 @@ const List = (props) => {
   // console.log(anime);
 
   return (
-    <div
-      role="list"
-      className="lg:flex md:flex sm:flex items-center xl:justify-between flex-wrap md:justify-around sm:justify-around lg:justify-around mt-20 mx-5"
-    >
-      {conten}
-    </div>
+    <>
+      <div
+        role="list"
+        className="lg:flex md:flex sm:flex items-center xl:justify-between flex-wrap md:justify-around sm:justify-around lg:justify-around mt-20 mx-5 dark:bg-gray-700"
+      >
+        {conten}
+      </div>
+      <div className="flex flex-row justify-center m-3">
+        {id > 0 && (
+          <Link
+            to={`/anime?tab=list&id=${parseInt(id) - 1} `}
+            onClick={() => getData()}
+            className="mx-5 p-3 hover:border-blue-500 text-blue-600 text-center border-2 border-blue-600 text-3xl"
+          >
+            <i className="bi bi-arrow-left"></i>
+          </Link>
+        )}
+        <Link
+          to={`/anime?tab=list&id=${parseInt(id) + 1}`}
+          onClick={() => getData(parseInt(id) + 1)}
+          className="mx-5 p-3 text-3xl hover:border-blue-500 text-blue-600 text-center border-2 border-blue-600"
+        >
+          <i className="bi bi-arrow-right"></i>
+        </Link>
+      </div>
+      <div className="px-10 py-10 shadow-md m-5 rounded-2xl text-center dark:bg-gray-800 dark:text-white">
+        <h1>
+          Data by{" "}
+          <a href="https://kitsu.io/" className="text-blue-600">
+            kitsu.io
+          </a>
+        </h1>
+      </div>
+    </>
   );
 };
 
